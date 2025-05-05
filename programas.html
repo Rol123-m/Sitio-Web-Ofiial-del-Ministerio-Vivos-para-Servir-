@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programas Educativos - Vivos para Servir</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Íconos + Fuentes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #4e7cff;
+      --color-secondary: #ff6b6b;
+      --color-dark: #343a40;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      padding-top: 80px; /* Para navbar fija */
+    }
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    .hero-education {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+    }
+    .program-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    .program-card .card-header {
+      background-color: var(--color-primary);
+      color: white;
+      padding: 20px;
+      border-bottom: none;
+    }
+    .program-card .card-body {
+      padding: 25px;
+    }
+    .badge-pill {
+      background-color: var(--color-secondary);
+      color: white;
+      padding: 5px 15px;
+      font-weight: 600;
+    }
+    .breadcrumb {
+      background-color: transparent;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (Coherente con la página principal) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-hands-helping me-2"></i>Vivos para Servir
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="programas-educativos.html">Educación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Comunidad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Misiones</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-education text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-4">Formación Integral</h1>
+      <p class="lead fs-4">Equipamos siervos con herramientas bíblicas y teológicas</p>
+    </div>
+  </section>
+
+  <!-- Migas de pan -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Programas Educativos</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Programas Educativos -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Nuestros Programas</h2>
+        <p class="lead text-muted">Cursos diseñados para el crecimiento espiritual y ministerial</p>
+      </div>
+
+      <!-- Programa 1: Discipulado Progresivo -->
+      <div class="program-card">
+        <div class="card-header">
+          <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Discipulado Progresivo</h3>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge badge-pill">12 meses</span>
+            <small class="text-muted"><i class="fas fa-users me-1"></i> Presencial/Virtual</small>
+          </div>
+          <p class="card-text">
+            Un camino de transformación en 4 etapas: <strong>Conversión</strong>, <strong>Crecimiento</strong>, 
+            <strong>Servicio</strong> y <strong>Multiplicación</strong>. Ideal para nuevos creyentes.
+          </p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Enseñanzas semanales con mentor</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Grupos de accountability</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Proyecto final de aplicación</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Inscribirse</a>
+          <a href="#" class="btn btn-outline-secondary ms-2">Ver temario</a>
+        </div>
+      </div>
+
+      <!-- Programa 2: Evangelismo -->
+      <div class="program-card">
+        <div class="card-header">
+          <h3 class="mb-0"><i class="fas fa-cross me-2"></i>Escuela de Evangelismo</h3>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge badge-pill">8 semanas</span>
+            <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Presencial intensivo</small>
+          </div>
+          <p class="card-text">
+            Técnicas bíblicas para compartir el Evangelio efectivamente en contextos urbanos, 
+            digitales y multiculturales.
+          </p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Talleres prácticos en calles y plazas</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Evangelismo digital (redes sociales)</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Enfoque en apologética básica</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Inscribirse</a>
+          <a href="#" class="btn btn-outline-secondary ms-2">Ver temario</a>
+        </div>
+      </div>
+
+      <!-- Programa 3: Teología -->
+      <div class="program-card">
+        <div class="card-header">
+          <h3 class="mb-0"><i class="fas fa-bible me-2"></i>Teología para Laicos</h3>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge badge-pill">6 meses</span>
+            <small class="text-muted"><i class="fas fa-laptop me-1"></i> Virtual</small>
+          </div>
+          <p class="card-text">
+            Fundamentos de doctrina cristiana: <strong>Dios</strong>, <strong>Hombre</strong>, <strong>Pecado</strong>, 
+            <strong>Salvación</strong>, <strong>Iglesia</strong> y <strong>Escatología</strong>.
+          </p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Clases en vivo con teólogos certificados</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Foros de discusión semanales</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Bibliografía comentada</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Inscribirse</a>
+          <a href="#" class="btn btn-outline-secondary ms-2">Ver temario</a>
+        </div>
+      </div>
+
+      <!-- Programa 4: Predicación -->
+      <div class="program-card">
+        <div class="card-header">
+          <h3 class="mb-0"><i class="fas fa-microphone me-2"></i>Taller de Predicación Expositiva</h3>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge badge-pill">10 semanas</span>
+            <small class="text-muted"><i class="fas fa-user-friends me-1"></i> Grupos reducidos</small>
+          </div>
+          <p class="card-text">
+            Domina el arte de preparar y entregar sermones fieles al texto bíblico, 
+            con poder y relevancia cultural.
+          </p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Grabación y feedback de predicaciones</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Hermenéutica aplicada</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Taller de homilética</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Inscribirse</a>
+          <a href="#" class="btn btn-outline-secondary ms-2">Ver temario</a>
+        </div>
+      </div>
+
+      <!-- Programa 5: Idiomas Bíblicos -->
+      <div class="program-card">
+        <div class="card-header">
+          <h3 class="mb-0"><i class="fas fa-language me-2"></i>Idiomas Bíblicos</h3>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="badge badge-pill">9 meses</span>
+            <small class="text-muted"><i class="fas fa-graduation-cap me-1"></i> Niveles I, II y III</small>
+          </div>
+          <p class="card-text">
+            Introducción al <strong>griego koiné</strong> y <strong>hebreo bíblico</strong> para estudio 
+            serio de las Escrituras en sus idiomas originales.
+          </p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Gramática básica aplicada</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Uso de herramientas digitales (Logos, BibleWorks)</li>
+            <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Talleres de traducción</li>
+          </ul>
+          <a href="https://rol123-m.github.io/Curso-de-Griego/index.html" class="btn btn-primary">Inscribirse</a>
+          <a href="#" class="btn btn-outline-secondary ms-2">Ver temario</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Llamado a la Acción -->
+  <section class="py-5 bg-light">
+    <div class="container text-center py-4">
+      <h2 class="mb-4">¿Listo para crecer en tu fe?</h2>
+      <p class="lead mb-4">Nuestros asesores están disponibles para guiarte hacia el programa ideal para ti.</p>
+      <a href="index.html#contacto" class="btn btn-primary btn-lg px-5">Contáctanos</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">© 2023 Vivos para Servir. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

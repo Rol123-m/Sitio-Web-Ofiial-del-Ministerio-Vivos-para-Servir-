@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Proyectos - Vivos para Servir</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #4e7cff;
+      --color-secondary: #ff6b6b;
+      --color-dark: #343a40;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+      background-color: #f8f9fa;
+    }
+    .hero-gallery {
+      background: linear-gradient(135deg, var(--color-primary), #3a5fc8);
+      color: white;
+      padding: 100px 0;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      margin-bottom: 50px;
+    }
+    .gallery-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 25px;
+    }
+    .gallery-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    .gallery-img {
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    .badge-category {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.8rem;
+      z-index: 2;
+    }
+    .img-overlay {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-card:hover .img-overlay::after {
+      opacity: 1;
+    }
+    .view-more-btn {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.3s;
+      z-index: 3;
+      opacity: 0;
+    }
+    .gallery-card:hover .view-more-btn {
+      bottom: 20px;
+      opacity: 1;
+    }
+    .project-tabs .nav-link {
+      color: var(--color-dark);
+      font-weight: 600;
+      border: none;
+      padding: 12px 25px;
+    }
+    .project-tabs .nav-link.active {
+      color: var(--color-primary);
+      border-bottom: 3px solid var(--color-primary);
+      background: transparent;
+    }
+    .back-btn {
+      transition: all 0.3s;
+    }
+    .back-btn:hover {
+      transform: translateX(-5px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-hands-helping me-2"></i>Vivos para Servir
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="programas-educativos.html">Educación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="proyectos-comunitarios.html">Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="galeria-proyectos.html">Galería</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-gallery text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-4">Nuestro Impacto en Imágenes</h1>
+      <p class="lead fs-4">Cada foto cuenta una historia de transformación</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="proyectos-comunitarios.html">Proyectos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Galería</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Tabs de Proyectos -->
+  <section class="py-4">
+    <div class="container">
+      <ul class="nav project-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" data-bs-toggle="tab" href="#cocina">Cocina Comunitaria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#ninos">Sonrisas Eternas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#vivienda">Hogar Digno</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#emergencia">Ayuda Urgente</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contenido de Tabs -->
+  <div class="tab-content py-5">
+    <!-- Tab 1: Cocina Comunitaria -->
+    <div class="tab-pane fade show active" id="cocina">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <h2 class="fw-bold"><i class="fas fa-utensils me-3"></i>Cocina Comunitaria "Pan de Vida"</h2>
+          <a href="proyectos-comunitarios.html" class="btn btn-outline-primary back-btn">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        
+        <div class="row">
+          <!-- Foto 1 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-success badge-category">Servicio</span>
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Preparación de alimentos">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Preparando alimentos con amor</h5>
+                <p class="card-text text-muted">Voluntarios cocinando para 120 personas diarias</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 15 Nov 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 2 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-warning badge-category">Entrega</span>
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" class="gallery-img w-100" alt="Entrega de alimentos">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Don Pedro recibe su almuerzo</h5>
+                <p class="card-text text-muted">Adultos mayores son prioridad en nuestro programa</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 2 Nov 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 3 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-info badge-category">Voluntarios</span>
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Equipo de voluntarios">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Nuestro equipo de servicio</h5>
+                <p class="card-text text-muted">Jóvenes comprometidos cada sábado</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 28 Oct 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 4 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-secondary badge-category">Infraestructura</span>
+                <img src="https://images.unsplash.com/photo-1600566752227-8f232e3ebb5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Nueva cocina industrial">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Nuevas instalaciones</h5>
+                <p class="card-text text-muted">Gracias a las donaciones de 2023</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 10 Oct 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 5 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-success badge-category">Evento</span>
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Cena especial">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Cena de Navidad 2022</h5>
+                <p class="card-text text-muted">Servimos 250 platos especiales</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 24 Dic 2022</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 6 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-primary badge-category">Donaciones</span>
+                <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="gallery-img w-100" alt="Recibiendo donaciones">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Entrega de víveres</h5>
+                <p class="card-text text-muted">Supermercados aliados apoyan nuestra causa</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 5 Sep 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Video Embed -->
+        <div class="row mt-5">
+          <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-lg">
+              <div class="card-body p-4">
+                <h4 class="text-center mb-4"><i class="fas fa-video me-2"></i>Conoce nuestro trabajo</h4>
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video de impacto" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tab 2: Sonrisas Eternas -->
+    <div class="tab-pane fade" id="ninos">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <h2 class="fw-bold"><i class="fas fa-child me-3"></i>Sonrisas Eternas</h2>
+          <a href="proyectos-comunitarios.html" class="btn btn-outline-primary back-btn">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        
+        <div class="row">
+          <!-- Foto 1 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-warning badge-category">Actividad</span>
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Taller infantil">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Taller de manualidades</h5>
+                <p class="card-text text-muted">Desarrollando creatividad en los niños</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 12 Nov 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 2 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-info badge-category">Educación</span>
+                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" class="gallery-img w-100" alt="Clase bíblica">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Historia de David y Goliat</h5>
+                <p class="card-text text-muted">Enseñando valores a través de la Biblia</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 5 Nov 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 3 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-success badge-category">Alimentación</span>
+                <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" class="gallery-img w-100" alt="Merienda saludable">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Merienda nutritiva</h5>
+                <p class="card-text text-muted">Frutas y lácteos para su desarrollo</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 29 Oct 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tab 3: Hogar Digno -->
+    <div class="tab-pane fade" id="vivienda">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <h2 class="fw-bold"><i class="fas fa-home me-3"></i>Hogar Digno</h2>
+          <a href="proyectos-comunitarios.html" class="btn btn-outline-primary back-btn">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        
+        <div class="row">
+          <!-- Foto 1 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-danger badge-category">Antes</span>
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" class="gallery-img w-100" alt="Vivienda deteriorada">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Casa de la familia Pérez</h5>
+                <p class="card-text text-muted">Estado inicial antes de la intervención</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 15 Ago 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 2 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-success badge-category">Después</span>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Vivienda renovada">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Transformación completa</h5>
+                <p class="card-text text-muted">Después de 3 semanas de trabajo</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 5 Sep 2023</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Foto 3 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-primary badge-category">Voluntarios</span>
+                <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Trabajo en equipo">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Nuestro equipo en acción</h5>
+                <p class="card-text text-muted">Jóvenes construyendo esperanza</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 22 Ago 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tab 4: Ayuda Urgente -->
+    <div class="tab-pane fade" id="emergencia">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+          <h2 class="fw-bold"><i class="fas fa-first-aid me-3"></i>Ayuda Urgente</h2>
+          <a href="proyectos-comunitarios.html" class="btn btn-outline-primary back-btn">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Proyectos
+          </a>
+        </div>
+        
+        <div class="row">
+          <!-- Foto 1 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="gallery-card h-100">
+              <div class="img-overlay">
+                <span class="badge bg-danger badge-category">Emergencia</span>
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="gallery-img w-100" alt="Entrega de ayudas">
+                <a href="#" class="btn btn-primary view-more-btn">Ampliar <i class="fas fa-expand ms-2"></i></a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Inundaciones en Valle Verde</h5>
+                <p class="card-text text-muted">Entrega de kits de aseo y alimentos</p>
+                <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> 3 Oct 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Llamado a la Acción -->
+  <section class="py-5 bg-primary text-white">
+    <div class="container text-center py-4">
+      <h2 class="mb-4">¿Quieres ser parte de estas historias?</h2>
+      <p class="lead mb-4">Tu donación hace posible que continuemos transformando vidas</p>
+      <a href="proyectos-comunitarios.html#donar" class="btn btn-light btn-lg px-5">Donar Ahora</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">© 2023 Vivos para Servir. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
