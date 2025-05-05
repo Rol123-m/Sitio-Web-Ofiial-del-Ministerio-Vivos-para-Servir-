@@ -1,378 +1,200 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuestro Equipo - Vivos para Servir</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-primary: #4e7cff;
-      --color-secondary: #ff6b6b;
-      --color-dark: #2c3e50;
+      --color-primary: #4361ee;
+      --color-secondary: #f72585;
+      --color-dark: #1a1a2e;
       --color-light: #f8f9fa;
     }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       padding-top: 80px;
       background-color: var(--color-light);
-      color: #333;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
     }
     .hero-team {
-      background: linear-gradient(135deg, var(--color-dark), #1a2a3a);
+      background: linear-gradient(135deg, var(--color-dark), #16213e);
       color: white;
-      padding: 120px 0 100px;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      padding: 100px 0;
       margin-bottom: 50px;
-      text-align: center;
-    }
-    .section-title {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 50px;
-    }
-    .section-title:after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 4px;
-      background: var(--color-primary);
-      bottom: -15px;
-      left: 25%;
-      border-radius: 2px;
     }
     .team-card {
       border: none;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       margin-bottom: 30px;
       background: white;
-      height: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     .team-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-    .team-img-container {
-      height: 320px;
-      overflow: hidden;
-      position: relative;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
     .team-img {
-      width: 100%;
-      height: 100%;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
-      object-position: top center;
-      transition: transform 0.5s;
-    }
-    .team-card:hover .team-img {
-      transform: scale(1.05);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .team-position {
       color: var(--color-primary);
       font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 15px;
-    }
-    .social-links a {
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(78, 124, 255, 0.1);
-      color: var(--color-primary);
-      border-radius: 50%;
-      margin: 0 3px;
-      transition: all 0.3s;
-    }
-    .social-links a:hover {
-      background: var(--color-primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-    .leadership-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--color-secondary);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      z-index: 2;
     }
     .nav-pills .nav-link {
       color: var(--color-dark);
       font-weight: 500;
-      border-radius: 30px;
-      padding: 8px 20px;
-      margin: 0 5px;
-      border: 1px solid transparent;
+      border-radius: 0;
+      border-bottom: 3px solid transparent;
+      margin: 0 10px;
+      padding: 8px 0;
       transition: all 0.3s;
     }
     .nav-pills .nav-link.active {
-      background: var(--color-primary);
-      color: white;
-      border-color: var(--color-primary);
-    }
-    .nav-pills .nav-link:not(.active):hover {
-      border-color: var(--color-primary);
-    }
-    .department-icon {
-      font-size: 2.5rem;
+      background: transparent;
       color: var(--color-primary);
-      margin-bottom: 15px;
+      border-bottom: 3px solid var(--color-primary);
     }
-    .team-description {
-      border-left: 4px solid var(--color-primary);
-      padding-left: 15px;
-      font-style: italic;
-      color: #555;
-    }
-    .all-team-section {
-      background-color: white;
-      padding: 60px 0;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    .team-category {
-      margin-bottom: 50px;
-    }
-    .category-title {
-      margin-bottom: 30px;
+    .department-title {
+      position: relative;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--color-primary);
-      display: inline-block;
+      margin-bottom: 30px;
+    }
+    .department-title:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--color-primary);
+      bottom: 0;
+      left: 0;
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar Minimalista -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">
-        <i class="fas fa-hands-helping me-2"></i>Vivos para Servir
-      </a>
+      <a class="navbar-brand" href="index.html">Vivos para Servir</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="programas-educativos.html">Educación</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="proyectos-comunitarios.html">Proyectos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="equipo.html">Equipo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="galeria-proyectos.html">Galería</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="equipo.html">Equipo</a></li>
+          <li class="nav-item"><a class="nav-link" href="proyectos.html">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-team">
+  <!-- Hero Simple -->
+  <section class="hero-team text-center">
     <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Nuestro Equipo</h1>
-      <p class="lead fs-4">Conoce a las personas detrás de la misión</p>
+      <h1 class="display-5 fw-bold mb-3">Nuestro Equipo</h1>
+      <p class="lead">Conoce a las personas que hacen posible nuestra misión</p>
     </div>
   </section>
 
-  <!-- Breadcrumb -->
-  <div class="container mt-4">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Equipo</li>
-      </ol>
-    </nav>
-  </div>
-
-  <!-- Filtros por Área -->
-  <section class="py-4 bg-white">
+  <!-- Equipo Principal -->
+  <section class="py-5">
     <div class="container">
-      <ul class="nav nav-pills justify-content-center flex-wrap">
-        <li class="nav-item">
-          <a class="nav-link active" href="#todo-el-equipo">Todo el Equipo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#liderazgo">Dirección</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#misiones">Misiones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#academico">Académico</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#administrativo">Administrativo</a>
-        </li>
+      <h2 class="department-title">Liderazgo</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Rolando -->
+        <div class="col-lg-4 col-md-6">
+          <div class="team-card text-center p-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="team-img mb-3" alt="Rolando Desdín">
+            <h4>Rolando Y. Desdín García</h4>
+            <p class="team-position">Director General</p>
+            <p>Fundador y visionario de la organización con más de 20 años de experiencia en trabajo social.</p>
+            <div class="mt-3">
+              <a href="#" class="btn btn-sm btn-outline-primary">Contactar</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mario -->
+        <div class="col-lg-4 col-md-6">
+          <div class="team-card text-center p-4">
+            <img src="https://randomuser.me/api/portraits/men/44.jpg" class="team-img mb-3" alt="Mario Mondeja">
+            <h4>Mario L. Mondeja Leyva</h4>
+            <p class="team-position">Director Ejecutivo</p>
+            <p>Especialista en gestión de proyectos sociales y desarrollo comunitario.</p>
+            <div class="mt-3">
+              <a href="#" class="btn btn-sm btn-outline-primary">Contactar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo por Áreas -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <ul class="nav nav-pills justify-content-center mb-5">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="pill" href="#misiones">Misiones</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="pill" href="#academico">Académico</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="pill" href="#administrativo">Administrativo</a></li>
       </ul>
-    </div>
-  </section>
 
-  <!-- Todo el Equipo -->
-  <section id="todo-el-equipo" class="py-5">
-    <div class="container all-team-section">
-      <div class="text-center mb-5">
-        <h2 class="section-title fw-bold">Conoce a Nuestro Equipo</h2>
-        <p class="lead text-muted">Profesionales comprometidos con la transformación social</p>
-      </div>
-
-      <!-- Dirección -->
-      <div class="team-category" id="liderazgo">
-        <h3 class="category-title"><i class="fas fa-star me-2"></i>Dirección General</h3>
-        <div class="row g-4">
-          <!-- Rolando Y. Desdín García -->
-          <div class="col-lg-6">
-            <div class="team-card">
-              <div class="team-img-container">
-                <span class="leadership-badge">Director General</span>
-                <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" class="team-img" alt="Rolando Y. Desdín García">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">Rolando Y. Desdín García</h3>
-                <p class="team-position">Director General</p>
-                <p class="team-description">"Servir no es una actividad, es una forma de vida"</p>
-                <p class="card-text">Pastor con 25 años de experiencia en ministerio social y desarrollo comunitario. Fundador de "Vivos para Servir" y arquitecto de nuestro modelo de impacto integral.</p>
-                <div class="social-links mt-4">
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="mailto:rolando@vivosparaservir.org"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Mario L. Mondeja Leyva -->
-          <div class="col-lg-6">
-            <div class="team-card">
-              <div class="team-img-container">
-                <span class="leadership-badge">Director Ejecutivo</span>
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="team-img" alt="Mario L. Mondeja Leyva">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">Mario L. Mondeja Leyva</h3>
-                <p class="team-position">Director Ejecutivo</p>
-                <p class="team-description">"La excelencia en el servicio honra a Dios y bendice a las personas"</p>
-                <p class="card-text">Administrador de ONGs con maestría en desarrollo comunitario. Coordina la ejecución de todos nuestros programas y la gestión estratégica.</p>
-                <div class="social-links mt-4">
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="mailto:mario@vivosparaservir.org"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Misiones -->
-      <div class="team-category" id="misiones">
-        <h3 class="category-title"><i class="fas fa-globe-americas me-2"></i>Área de Misiones</h3>
-        <div class="row g-4">
-          <!-- Miguel Torres Morera -->
-          <div class="col-lg-6 mx-auto">
-            <div class="team-card">
-              <div class="team-img-container">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="team-img" alt="Miguel Torres Morera">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">Miguel Torres Morera</h3>
+      <div class="tab-content">
+        <!-- Misiones -->
+        <div class="tab-pane fade show active" id="misiones">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-6">
+              <div class="team-card text-center p-4">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" class="team-img mb-3" alt="Miguel Torres">
+                <h4>Miguel Torres Morera</h4>
                 <p class="team-position">Director de Misiones</p>
-                <p class="team-description">"El amor no conoce fronteras"</p>
-                <p class="card-text">Misionero con experiencia en 15 países. Ha liderado proyectos humanitarios en zonas de conflicto y coordina nuestros equipos internacionales.</p>
-                <div class="social-links mt-4">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="mailto:miguel@vivosparaservir.org"><i class="fas fa-envelope"></i></a>
+                <p>Líder de proyectos internacionales en 12 países.</p>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-primary">Contactar</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Académico -->
-      <div class="team-category" id="academico">
-        <h3 class="category-title"><i class="fas fa-graduation-cap me-2"></i>Área Académica</h3>
-        <div class="row g-4">
-          <!-- Yurleydy Domínguez -->
-          <div class="col-lg-6 mx-auto">
-            <div class="team-card">
-              <div class="team-img-container">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" class="team-img" alt="Yurleydy Domínguez">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">Yurleydy Domínguez</h3>
+        
+        <!-- Académico -->
+        <div class="tab-pane fade" id="academico">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-6">
+              <div class="team-card text-center p-4">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="team-img mb-3" alt="Yurleydy Domínguez">
+                <h4>Yurleydy Domínguez</h4>
                 <p class="team-position">Asesora Académica</p>
-                <p class="team-description">"La educación transforma mentes y corazones"</p>
-                <p class="card-text">Doctora en Teología con especialización en educación cristiana. Diseña nuestros programas de formación y supervisa la calidad académica.</p>
-                <div class="social-links mt-4">
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#"><i class="fab fa-researchgate"></i></a>
+                <p>Doctora en Teología y diseñadora de programas educativos.</p>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-primary">Contactar</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Administrativo -->
-      <div class="team-category" id="administrativo">
-        <h3 class="category-title"><i class="fas fa-calculator me-2"></i>Área Administrativa</h3>
-        <div class="row g-4">
-          <!-- José R. Licea -->
-          <div class="col-lg-6">
-            <div class="team-card">
-              <div class="team-img-container">
-                <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1167&q=80" class="team-img" alt="José R. Licea">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">José R. Licea</h3>
+        
+        <!-- Administrativo -->
+        <div class="tab-pane fade" id="administrativo">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="team-card text-center p-4">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" class="team-img mb-3" alt="José Licea">
+                <h4>José R. Licea</h4>
                 <p class="team-position">Responsable Económico</p>
-                <p class="team-description">"La mayordomía financiera es servicio"</p>
-                <p class="card-text">Contador público con maestría en finanzas sin fines de lucro. Gestiona los recursos con transparencia para maximizar nuestro impacto social.</p>
-                <div class="social-links mt-4">
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Equipo Administrativo -->
-          <div class="col-lg-6">
-            <div class="team-card">
-              <div class="team-img-container">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1184&q=80" class="team-img" alt="Equipo Administrativo">
-              </div>
-              <div class="card-body p-4">
-                <h3 class="mb-1">Equipo Administrativo</h3>
-                <p class="team-position">Logística y Operaciones</p>
-                <p class="team-description">"Detrás de cada gran proyecto hay un gran equipo"</p>
-                <p class="card-text">Profesionales dedicados que aseguran el funcionamiento diario de nuestros programas, desde contabilidad hasta logística de eventos.</p>
-                <div class="social-links mt-4">
-                  <a href="mailto:administracion@vivosparaservir.org"><i class="fas fa-envelope"></i></a>
+                <p>Contador público especializado en ONGs.</p>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-sm btn-outline-primary">Contactar</a>
                 </div>
               </div>
             </div>
@@ -382,44 +204,13 @@
     </div>
   </section>
 
-  <!-- Llamado a la Acción -->
-  <section class="py-5 bg-primary text-white">
-    <div class="container text-center py-4">
-      <h2 class="mb-4">¿Te gustaría unirte a nuestro equipo?</h2>
-      <p class="lead mb-4">Buscamos personas apasionadas por servir a los demás</p>
-      <a href="index.html#contacto" class="btn btn-light btn-lg px-5">Contáctanos</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0">© 2023 Vivos para Servir. Todos los derechos reservados.</p>
-        </div>
-        <div class="col-md-6 text-center text-md-end">
-          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
+  <!-- Footer Simple -->
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-0">© 2023 Vivos para Servir. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </body>
 </html>
