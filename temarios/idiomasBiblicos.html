@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temarios de Idiomas Bíblicos - Vivos para Servir</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Íconos + Fuentes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #4e7cff;
+      --color-secondary: #ff6b6b;
+      --color-dark: #343a40;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      padding-top: 80px;
+    }
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+    }
+    .language-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+    .language-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .language-card.active {
+      border: 3px solid var(--color-primary);
+    }
+    .badge-pill {
+      background-color: var(--color-secondary);
+      color: white;
+      padding: 5px 15px;
+      font-weight: 600;
+    }
+    .syllabus-container {
+      display: none;
+    }
+    .syllabus-container.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .module-card {
+      border-left: 4px solid var(--color-primary);
+      margin-bottom: 15px;
+    }
+    .greek { border-left-color: #4e7cff; }
+    .hebrew { border-left-color: #6b4eff; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-hands-helping me-2"></i>Vivos para Servir
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="programas-educativos.html">Educación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Comunidad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Misiones</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-4">Idiomas Bíblicos</h1>
+      <p class="lead fs-4">Estudia las Escrituras en sus idiomas originales</p>
+    </div>
+  </section>
+
+  <!-- Migas de pan -->
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="programas-educativos.html">Programas Educativos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Temarios de Idiomas Bíblicos</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Selección de Idioma -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Selecciona un Idioma</h2>
+        <p class="lead text-muted">Explora nuestros programas estructurados para un aprendizaje efectivo</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="language-card text-center p-4 active" onclick="showSyllabus('greek')" id="greek-card">
+            <i class="fas fa-language fa-3x mb-3" style="color: #4e7cff;"></i>
+            <h3>Griego Koiné</h3>
+            <p class="text-muted">Basado en el método de William Mounce</p>
+            <span class="badge badge-pill">3 Niveles</span>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="language-card text-center p-4" onclick="showSyllabus('hebrew')" id="hebrew-card">
+            <i class="fas fa-language fa-3x mb-3" style="color: #6b4eff;"></i>
+            <h3>Hebreo Bíblico</h3>
+            <p class="text-muted">Enfoque práctico y gramatical</p>
+            <span class="badge badge-pill">3 Niveles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temario Griego -->
+  <section class="py-3 syllabus-container active" id="greek-syllabus">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold"><i class="fas fa-language me-2" style="color: #4e7cff;"></i>Temario de Griego Koiné</h2>
+        <p class="lead text-muted">Estructurado según el método de William Mounce (Basics of Biblical Greek)</p>
+      </div>
+
+      <!-- Nivel 1 -->
+      <div class="card module-card greek mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 1: Fundamentos</h3>
+        </div>
+        <div class="card-body">
+          <ol>
+            <li><strong>Introducción al Griego Koiné</strong>
+              <ul>
+                <li>El alfabeto griego y pronunciación</li>
+                <li>Puntuación y acentos</li>
+                <li>Vocabulario básico (50 palabras más comunes)</li>
+              </ul>
+            </li>
+            <li><strong>Sustantivos y Artículos</strong>
+              <ul>
+                <li>El artículo definido</li>
+                <li>Primera y segunda declinación</li>
+                <li>Casos gramaticales (nominativo, vocativo, acusativo, genitivo, dativo)</li>
+              </ul>
+            </li>
+            <li><strong>Preposiciones y Adjetivos</strong>
+              <ul>
+                <li>Preposiciones básicas y sus casos</li>
+                <li>Adjetivos de primera y segunda clase</li>
+                <li>Concordancia adjetivo-sustantivo</li>
+              </ul>
+            </li>
+            <li><strong>Pronombres</strong>
+              <ul>
+                <li>Pronombres personales</li>
+                <li>Pronombres demostrativos</li>
+                <li>Pronombre relativo</li>
+              </ul>
+            </li>
+            <li><strong>Verbos: Presente Activo Indicativo</strong>
+              <ul>
+                <li>Estructura verbal griega</li>
+                <li>Conjugación del presente activo</li>
+                <li>Verbos contractos</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Nivel 2 -->
+      <div class="card module-card greek mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 2: Gramática Intermedia</h3>
+        </div>
+        <div class="card-body">
+          <ol start="6">
+            <li><strong>Sistema Verbal: Aspectos y Tiempos</strong>
+              <ul>
+                <li>Futuro activo y medio</li>
+                <li>Imperfecto activo indicativo</li>
+                <li>Aoristo activo e imperfectivo</li>
+              </ul>
+            </li>
+            <li><strong>Voces Verbales</strong>
+              <ul>
+                <li>Voz activa, media y pasiva</li>
+                <li>Formas contractas y mixtas</li>
+                <li>Participios: formación y uso</li>
+              </ul>
+            </li>
+            <li><strong>Sustantivos y Adjetivos Especiales</strong>
+              <ul>
+                <li>Tercera declinación</li>
+                <li>Sustantivos con patrones especiales</li>
+                <li>Adjetivos irregulares y comparativos</li>
+              </ul>
+            </li>
+            <li><strong>Pronombres y Adverbios</strong>
+              <ul>
+                <li>Pronombres reflexivos y recíprocos</li>
+                <li>Pronombres interrogativos e indefinidos</li>
+                <li>Formación y uso de adverbios</li>
+              </ul>
+            </li>
+            <li><strong>Oraciones Subordinadas</strong>
+              <ul>
+                <li>Oraciones de relativo</li>
+                <li>Oraciones condicionales</li>
+                <li>Infinitivos y construcciones con infinitivo</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Nivel 3 -->
+      <div class="card module-card greek mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 3: Aplicación y Lectura</h3>
+        </div>
+        <div class="card-body">
+          <ol start="11">
+            <li><strong>Verbos Compuestos y Especiales</strong>
+              <ul>
+                <li>Prefijos verbales y su significado</li>
+                <li>Verbos deponentes</li>
+                <li>Verbos con formas irregulares</li>
+              </ul>
+            </li>
+            <li><strong>Sintaxis Avanzada</strong>
+              <ul>
+                <li>Usos especiales de los casos</li>
+                <li>Construcciones preposicionales complejas</li>
+                <li>Orden de palabras y énfasis</li>
+              </ul>
+            </li>
+            <li><strong>Lectura Guiada del NT</strong>
+              <ul>
+                <li>1 Juan (texto completo)</li>
+                <li>Selecciones de los Evangelios</li>
+                <li>Pasajes paulinos</li>
+              </ul>
+            </li>
+            <li><strong>Herramientas de Estudio</strong>
+              <ul>
+                <li>Uso de léxicos y concordancias</li>
+                <li>Gramáticas avanzadas</li>
+                <li>Recursos digitales (Logos, BibleWorks)</li>
+              </ul>
+            </li>
+            <li><strong>Exégesis Práctica</strong>
+              <ul>
+                <li>Análisis de pasajes difíciles</li>
+                <li>Variantes textuales importantes</li>
+                <li>Proyecto final de traducción y análisis</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temario Hebreo -->
+  <section class="py-3 syllabus-container" id="hebrew-syllabus">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold"><i class="fas fa-language me-2" style="color: #6b4eff;"></i>Temario de Hebreo Bíblico</h2>
+        <p class="lead text-muted">Enfoque práctico para lectura y análisis del Antiguo Testamento</p>
+      </div>
+
+      <!-- Nivel 1 -->
+      <div class="card module-card hebrew mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 1: Introducción al Hebreo</h3>
+        </div>
+        <div class="card-body">
+          <ol>
+            <li><strong>Fundamentos del Hebreo Bíblico</strong>
+              <ul>
+                <li>El alfabeto hebreo y su escritura</li>
+                <li>Vocales y puntos diacríticos</li>
+                <li>Pronunciación y práctica de lectura</li>
+              </ul>
+            </li>
+            <li><strong>Sustantivos y Artículos</strong>
+              <ul>
+                <li>Género y número en hebreo</li>
+                <li>El artículo definido</li>
+                <li>Preposiciones básicas</li>
+              </ul>
+            </li>
+            <li><strong>Verbos: Qal Perfecto</strong>
+              <ul>
+                <li>Raíces verbales y patrones (binyanim)</li>
+                <li>Conjugación del perfecto en Qal</li>
+                <li>Sujetos implícitos</li>
+              </ul>
+            </li>
+            <li><strong>Adjetivos y Pronombres</strong>
+              <ul>
+                <li>Concordancia adjetivo-sustantivo</li>
+                <li>Pronombres personales independientes</li>
+                <li>Pronombres demostrativos</li>
+              </ul>
+            </li>
+            <li><strong>Vocabulario Básico</strong>
+              <ul>
+                <li>100 palabras más frecuentes del AT</li>
+                <li>Frases y expresiones comunes</li>
+                <li>Lectura de pasajes simples</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Nivel 2 -->
+      <div class="card module-card hebrew mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 2: Gramática Intermedia</h3>
+        </div>
+        <div class="card-body">
+          <ol start="6">
+            <li><strong>Verbos: Qal Imperfecto</strong>
+              <ul>
+                <li>Conjugación del imperfecto</li>
+                <li>La vav conversiva</li>
+                <li>Secuencias verbales</li>
+              </ul>
+            </li>
+            <li><strong>Otros Binyanim Verbales</strong>
+              <ul>
+                <li>Nifal: formación y significado</li>
+                <li>Piel y Pual</li>
+                <li>Hifil y Hofal</li>
+              </ul>
+            </li>
+            <li><strong>Sustantivos y Construcciones</strong>
+              <ul>
+                <li>Estados constructos</li>
+                <li>Sufijos pronominales</li>
+                <li>Numerales</li>
+              </ul>
+            </li>
+            <li><strong>Sintaxis Básica</strong>
+              <ul>
+                <li>Orden de palabras</li>
+                <li>Oraciones nominales</li>
+                <li>Partículas interrogativas</li>
+              </ul>
+            </li>
+            <li><strong>Lectura Guiada</strong>
+              <ul>
+                <li>Génesis 1:1-2:3</li>
+                <li>Rut 1 (selecciones)</li>
+                <li>Salmos cortos</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Nivel 3 -->
+      <div class="card module-card hebrew mb-4">
+        <div class="card-header bg-light">
+          <h3 class="mb-0">Nivel 3: Hebreo Avanzado</h3>
+        </div>
+        <div class="card-body">
+          <ol start="11">
+            <li><strong>Verbos: Formas Avanzadas</strong>
+              <ul>
+                <li>Imperativo y cohortativo</li>
+                <li>Infinitivo constructo y absoluto</li>
+                <li>Participios</li>
+              </ul>
+            </li>
+            <li><strong>Sintaxis Compleja</strong>
+              <ul>
+                <li>Oraciones subordinadas</li>
+                <li>Discursos directos e indirectos</li>
+                <li>Figuras retóricas en hebreo</li>
+              </ul>
+            </li>
+            <li><strong>Lectura de Textos Complejos</strong>
+              <ul>
+                <li>Historias de David (1 Samuel)</li>
+                <li>Profecías de Isaías (selecciones)</li>
+                <li>Proverbios y literatura sapiencial</li>
+              </ul>
+            </li>
+            <li><strong>Herramientas de Estudio</strong>
+              <ul>
+                <li>Uso de diccionarios y léxicos</li>
+                <li>Concordancias y herramientas digitales</li>
+                <li>Introducción a la crítica textual</li>
+              </ul>
+            </li>
+            <li><strong>Exégesis Práctica</strong>
+              <ul>
+                <li>Análisis de pasajes difíciles</li>
+                <li>Problemas de traducción</li>
+                <li>Proyecto final de análisis textual</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Llamado a la Acción -->
+  <section class="py-5 bg-light">
+    <div class="container text-center py-4">
+      <h2 class="mb-4">¿Listo para comenzar tu viaje en los idiomas bíblicos?</h2>
+      <p class="lead mb-4">Inscríbete hoy y obtén acceso a todos nuestros recursos de aprendizaje.</p>
+      <a href="https://rol123-m.github.io/Curso-de-Griego/index.html" class="btn btn-primary btn-lg px-5">Inscribirse al Curso</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">© 2023 Vivos para Servir. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    function showSyllabus(language) {
+      // Ocultar todos los temarios
+      document.querySelectorAll('.syllabus-container').forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      // Mostrar el temario seleccionado
+      document.getElementById(`${language}-syllabus`).classList.add('active');
+      
+      // Actualizar tarjetas de selección
+      document.querySelectorAll('.language-card').forEach(el => {
+        el.classList.remove('active');
+      });
+      document.getElementById(`${language}-card`).classList.add('active');
+    }
+  </script>
+</body>
+</html>
